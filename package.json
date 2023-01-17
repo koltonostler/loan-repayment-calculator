@@ -15,7 +15,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-static": "^1.0.4",
 		"chart.js": "^4.1.2"
 	}
 }
