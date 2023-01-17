@@ -1,9 +1,13 @@
 
 <script>
     import Chart from 'chart.js/auto'
+    export let labels;
+    export let avalancheChartData;
+    export let snowballChartData;
+    export let minPaymentChartData;
     const data1 = {
-        label: 'My First Dataset',
-        data: [65, 59, 80, 81, 56, 55, 40],
+        label: 'Avalanche Approach',
+        data: avalancheChartData,
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
@@ -11,44 +15,53 @@
     };
     
     const data2 = {     
-        label: 'My second Dataset',
-        data: [60, 9, 120, 51, 36, 45, 47],
+        label: 'Snowball Approach',
+        data: snowballChartData,
         fill: false,
         borderColor: 'rgb(5, 12, 192)',
         tension: 0.1   
     };
+
+    const data3 = {     
+        label: 'Minimum Payments',
+        data: minPaymentChartData,
+        fill: false,
+        borderColor: 'rgb(255, 12, 45)',
+        tension: 0.1   
+    };
     let myChart = null;
-    const labels = [1,2,3,4,5,6,7]
-    const dataSets = [data1, data2]
+    const dataSets = [data1, data2, data3]
+
+    async function handleCreateChart(myChart) {
+        myChart = await generateChart(dataSets, labels)
+    }
 
    
-    async function handleCreateChart(data) {
-        
+    async function generateChart(data, labels) {    
         let ctx = document.getElementById('myChart');
         
         let myChart = new Chart(
             ctx,
             {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: data
-            }
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: data
+                },
             }
         );
+
         return myChart;
     };
 </script>
 
 
 
-<!-- <button on:click|preventDefault = {()=> {
-    myChart = handleCreateChart(dataSets);
-}} id="chartBtn">Create Chart
-</button> -->
+<button on:click|preventDefault = {()=> {handleCreateChart(myChart)}} id="chartBtn">Create Chart
+</button>
 
-<article class="chart-container">
-    <div  style="width: 800px;"><canvas id="myChart"></canvas></div>
+<article class= "chart-container">
+        <div style="width: 800px;"><canvas id="myChart"></canvas></div>
 </article>
 
     

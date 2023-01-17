@@ -1,10 +1,2 @@
-<script>
-
-    
-
-
-
-
-</script>
 
 
