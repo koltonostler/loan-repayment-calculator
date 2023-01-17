@@ -4,6 +4,8 @@ import LoanInput from "../components/LoanInput.svelte";
 import Chart from 'chart.js/auto'
 import Footer from "../components/Footer.svelte";
 
+export const prerender = true;
+
 let loans = [
     {id: 1, canDelete: false, loanAmount: 0, rate: 0, minPayment: 0},  
 ]
