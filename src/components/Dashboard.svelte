@@ -8,7 +8,7 @@
 <div class="grid">
 
     <article>
-        <h4>Avalanche Approach</h4>
+        <h4>Avalanche Approach <span class="info" data-tooltip="Pay off your loans from highest interest rate to lowest interest rate">&#9432</span></h4>
     
         <label for="avalanche-time">Total time to pay off all loans</label>
         <span id="avalanche-time">{(avalancheData[0] / 12).toFixed(2)} years</span>
@@ -19,7 +19,7 @@
     
     </article>
     <article>
-        <h4>Snowball Approach</h4>
+        <h4>Snowball Approach <span class="info" data-tooltip="Pay off your loans from smallest balance to highest balance">&#9432</span></h4>
     
         <label for="snowball-time">Total time to pay off all loans</label>
         <span id="snowball-time">{(snowballData[0] / 12).toFixed(2)} years</span>
@@ -31,7 +31,7 @@
     </article>
     {#if showMin}
         <article>
-            <h4>Minimum Payments</h4>
+            <h4>Minimum Payments <span class="info" data-tooltip="Only making minimum payments on all loans">&#9432</span></h4>
         
             <label for="min-time">Total time to pay off all loans</label>
             <span id="min-time">{(minPaymentData[0] / 12).toFixed(2)} years</span>
@@ -45,6 +45,9 @@
 </div>
 
 <style>
+    .info {
+        font-size: .95rem;
+    }
     article {
         margin: 1rem 0rem;
         padding: 2rem;
@@ -56,4 +59,5 @@
     span {
         font-weight: bold;
     }
+
 </style>

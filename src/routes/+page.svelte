@@ -307,14 +307,48 @@ const toggleTheme = () => {
 
 </script>
 
+
 <body class="container"> 
-    <button class="material-symbols-outlined theme-btn contrast" on:click={toggleTheme}>
-        dark_mode
-    </button>
-   
-    
-    <main> 
-        <h1>Student Loan Repayment Calculator</h1>  
+    <nav class="container-fluid">
+        <ul>
+          <li><strong>Loan Repayment Calculator</strong></li>
+        </ul>
+        <ul>        
+            <li> 
+                <button class="material-symbols-outlined theme-btn" on:click={toggleTheme}>
+                dark_mode
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <header class="container"> 
+        <div id="main-header">
+            <h1>What is the best strategy to pay off debt?</h1> 
+        </div>
+        <div class="container" id="header-description">
+            Calculate the fastest and most efficient strategy to get out of debt.
+        </div>
+        <div class="grid">
+            <div></div>
+            <button on:click={()=> {document.getElementById('main').scrollIntoView({behavior: "smooth"});}}>Loan Calculator</button> 
+            <div></div>
+        </div>
+        <div class="grid">
+            <blockquote>
+                "Debt is the slavery of the free."
+                <footer>
+                    <cite>-Publilius Syrus</cite>
+                </footer>
+            </blockquote>  
+            <blockquote>
+                "What can be added to the happiness of a man who is in health, out of debt, and has a clear conscience?"
+                <footer>
+                  <cite>-Adam Smith</cite>
+                </footer>
+              </blockquote>  
+        </div>
+    </header>
+    <main id="main"> 
         <section>
             <h3>Enter Loan Information</h3>
             <form id="myForm" on:submit|preventDefault = {handleCalcLoans}>
@@ -330,20 +364,20 @@ const toggleTheme = () => {
                 <button on:click|preventDefault = {handleAddLoan}>Add Another Loan</button>             
                 <div></div>
             </div>
-            <div class="grid" style="margin-bottom: 2rem;">
-                <div>
+            <div class="grid" style="margin: 2rem;">
+                <div class="dashboard">
                     <label for="add-payment">Additional Payment ($)</label>
                     <input bind:value={additionalPayment} type="number" id="add-payment" min="0">
                 </div>
-                <div>
+                <div class="dashboard">
                     <label for="month-payment">Total Monthly Payment</label>
-                    <div>${loans.reduce((acc, curr) => {
+                    <div style="padding: .75rem 1rem;">${loans.reduce((acc, curr) => {
                         return acc + curr.minPayment;
                     }, additionalPayment)}</div>
                 </div>
-                <div>
+                <div class="dashboard">
                     <label for="loan-amount">Total Loan Amount</label>
-                    <div>${loans.reduce((acc, curr) => {
+                    <div style="padding: .75rem 1rem;">${loans.reduce((acc, curr) => {
                         return acc + curr.loanAmount;
                     }, 0)}</div>
                 </div>
@@ -381,7 +415,14 @@ const toggleTheme = () => {
     h3, h1 {
         text-align: center;
     }
-    
+    h1 {
+        font-size: 3rem;
+        margin: 1rem;
+        padding: 1rem 5rem;
+    }
+    .dashboard {
+        padding: 1rem 0rem;
+    }
     .min-switch {
         font-size: .85rem;
     }
@@ -389,18 +430,41 @@ const toggleTheme = () => {
         display: flex;
         justify-content: center;
         align-items: center;
-        position: fixed;
-        width: 50px;
-        height: 50px;
-        right: 30px;
-        top: 20px;
-        border-radius: 50%;
         font-size: 1.5rem;
+    }
+    #header-description {
+        text-align: center;
+        padding: 1rem 5rem;
+        margin: 1.5rem 0;
+    }
+
+    blockquote {
+        font-size: .95rem;
+    }
+
+    nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--card-background-color);
+        border-bottom: 2px solid var(--primary);
     }
     .chart-container {
         display: flex; 
         justify-content: center;
         align-items: center;
+        margin: 0;
+    }
+    header {
+        padding: .5rem;
+        margin: 7rem 0;
+    }
+
+    @media screen and (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+        }
     }
 </style>
 
