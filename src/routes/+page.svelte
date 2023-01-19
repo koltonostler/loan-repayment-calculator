@@ -465,6 +465,20 @@ const toggleTheme = () => {
             font-size: 2rem;
             padding: 1rem 2rem;
         }
+        #header-description {
+        
+            padding: 1rem 2rem;
+            margin: 1rem 0;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        h1 {
+            padding: 1rem .25rem;
+        }
+        #header-description {
+            padding: 1rem .25rem;
+        }
     }
 </style>
 
